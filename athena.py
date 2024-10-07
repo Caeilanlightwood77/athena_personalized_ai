@@ -50,8 +50,8 @@ def loop():
 
 def login():
     # Saved username and password
-    username = "Caeilanlightwood77"
-    password = "N3v3rm0r3"
+    username = "HelloWorld"
+    password = "H3ll0W0rld"
 
     # Local variable for manipulation
     text = ""
