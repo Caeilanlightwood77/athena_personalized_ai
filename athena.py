@@ -5,6 +5,7 @@ from timetable import timetable
 from timer import timer
 from random import randint
 from number_generator import random_number
+from send_email import initiate_send
 import pyttsx3
 
 engine = pyttsx3.init()
@@ -18,6 +19,7 @@ def loop():
         timer_response = ["timer", "open timer", "execute timer"]
         random_number_response = ["random number", "open random number", "execute random number",
                                   "generate a random number", "execute random number generator"]
+        send_email_response = ["Send email"]
         user_question = ["How else can I help you, Sir? ", "Is there anything else that I can help you with? ",
                          "Would like me to do something else, Sir? "]
         
@@ -36,6 +38,9 @@ def loop():
             return loop()
         elif user in random_number_response:
             random_number()
+            return loop()
+        elif user in send_email_response:
+            initiate_send()
             return loop()
         else:
             return 0
@@ -58,6 +63,7 @@ def login():
         timer_response = ["timer", "open timer", "execute timer"]
         random_number_response = ["random number", "open random number", "execute random number",
                                   "generate a random number", "execute random number generator"]
+        send_email_response = ["send email"]
 
         engine.say("Hello Sir. How can I help you today?")
         engine.runAndWait()
@@ -100,6 +106,10 @@ def login():
                                 engine.say("Executing the random number program.")
                                 engine.runAndWait()
                                 random_number()
+                            elif user in send_email_response:
+                                engine.say("Executing the email send program.")
+                                engine.runAndWait()
+                                initiate_send()
                             else:
                                 engine.say("Error 404. Ending the program.")
                                 engine.runAndWait()
